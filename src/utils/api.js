@@ -10,8 +10,12 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = () => {
-  return newsApi.get("/articles").then((res) => {
+export const getArticles = (topic) => {
+  let path = "/articles";
+  if (topic) {
+    path += `?topic=${topic}`;
+  }
+  return newsApi.get(path).then((res) => {
     return res.data.articles;
   });
 };
