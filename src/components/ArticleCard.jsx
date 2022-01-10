@@ -3,6 +3,7 @@ const ArticleCard = ({ title, body, topic, votes, author, comment_count }) => {
     <div>
       <article>
         <h2>{title}</h2>
+        <p>{topic}</p>
         <p>{body}</p>
       </article>
     </div>
