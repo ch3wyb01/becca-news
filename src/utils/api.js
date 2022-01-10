@@ -9,3 +9,9 @@ export const getTopics = () => {
     return res.data.topics;
   });
 };
+
+export const getArticles = () => {
+  return newsApi.get("/articles").then((res) => {
+    return res.data.articles;
+  });
+};
