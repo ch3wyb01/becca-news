@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
 
+  const {topic} = useParams();
+
   useEffect(() => {
-    getArticles().then((articlesFromApi) => {
+    getArticles(topic).then((articlesFromApi) => {
       setArticles(articlesFromApi);
     });
-  }, []);
+  }, [topic]);
 
   return (
     <main>
@@ -20,6 +23,7 @@ const ArticlesList = () => {
             key={article.article_id}
             title={article.title}
             body={article.body}
+            topic={article.topic}
           />
         );
       })}
