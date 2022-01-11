@@ -16,14 +16,16 @@ const ArticlesList = () => {
 
   return (
     <main>
-      <h1>Articles</h1>
+      <h1>{topic ? `${topic} articles` : "All articles"}</h1>
       {articles.map((article) => {
         return (
           <ArticleCard
             key={article.article_id}
+            id={article.article_id}
             title={article.title}
             body={article.body}
             topic={article.topic}
+            showTopic={topic}
           />
         );
       })}
