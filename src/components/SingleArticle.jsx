@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
+import CommentsList from "./CommentsList";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -25,6 +26,9 @@ const SingleArticle = () => {
       <div>
         <h3>{article.comment_count}</h3>
       </div>
+      <section>
+        <CommentsList article_id={article_id} />
+      </section>
     </main>
   );
 };
