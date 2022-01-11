@@ -1,12 +1,22 @@
-const ArticleCard = ({ title, body, topic, votes, author, comment_count }) => {
+import { Link } from "react-router-dom";
+
+const ArticleCard = ({
+  id,
+  title,
+  body,
+  topic,
+  votes,
+  author,
+  comment_count,
+  showTopic,
+}) => {
   return (
-    <div>
-      <article>
+    <Link to={`/articles/${id}`}>
+      <div>
         <h2>{title}</h2>
-        <p>{topic}</p>
-        <p>{body}</p>
-      </article>
-    </div>
+        {!showTopic && <p>{topic}</p>}
+      </div>
+    </Link>
   );
 };
 
