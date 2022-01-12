@@ -37,3 +37,9 @@ export const getUsers = () => {
     return res.data.users;
   });
 };
+
+export const patchArticleVotes = (id) => {
+  return newsApi.patch(`/articles/${id}`, { inc_votes: 1 }).then((res) => {
+    return res.data.article.votes;
+  });
+};
