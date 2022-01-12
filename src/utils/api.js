@@ -43,3 +43,11 @@ export const patchArticleVotes = (id) => {
     return res.data.article.votes;
   });
 };
+
+export const postComment = (article_id, body) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, { username: "jessjelly", body })
+    .then((res) => {
+      return res.data.comment;
+    });
+};
