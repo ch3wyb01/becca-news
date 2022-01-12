@@ -5,7 +5,7 @@ import ArticleVotes from "./ArticleVotes";
 import CommentsList from "./CommentsList";
 import ErrorMessage from "./ErrorMessage";
 
-const SingleArticle = () => {
+const SingleArticle = ({username}) => {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState(undefined);
@@ -48,7 +48,7 @@ const SingleArticle = () => {
           )}
 
           <section id="comments">
-            <CommentsList article_id={article_id} />
+            <CommentsList article_id={article_id} username={username}/>
           </section>
         </div>
       )}
