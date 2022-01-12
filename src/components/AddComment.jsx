@@ -23,8 +23,8 @@ const AddComment = ({ article_id, loadComments}) => {
         <textarea
           onChange={handleChange}
           name="body"
-          cols="30"
-          rows="10"
+          cols="20"
+          rows="5"
           value={comment}
         ></textarea>
         <button type="submit">Add comment</button>
