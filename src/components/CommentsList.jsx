@@ -14,7 +14,7 @@ const CommentsList = ({ article_id }) => {
   return (
     <section>
       {comments.map((comment) => {
-        return <CommentCard comment={comment}/>;
+        return <CommentCard key={comment.comment_id} comment={comment}/>;
       })}
     </section>
   );
