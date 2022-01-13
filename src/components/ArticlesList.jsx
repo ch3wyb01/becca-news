@@ -30,7 +30,10 @@ const ArticlesList = () => {
                 key={article.article_id}
                 id={article.article_id}
                 title={article.title}
-                body={article.body}
+                author={article.author}
+                created_at={article.created_at}
+                votes={article.votes}
+                comment_count={article.comment_count}
                 topic={article.topic}
                 showTopic={topic}
               />
