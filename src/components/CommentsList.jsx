@@ -3,7 +3,7 @@ import { getCommentsByArticleId } from "../utils/api";
 import AddComment from "./AddComment";
 import CommentCard from "./CommentCard";
 
-const CommentsList = ({ article_id, username }) => {
+const CommentsList = ({ article_id }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,7 +28,7 @@ const CommentsList = ({ article_id, username }) => {
           <AddComment article_id={article_id} loadComments={loadComments}/>
           <section>
             {comments.map((comment) => {
-              return <CommentCard key={comment.comment_id} comment={comment} username={username} loadComments={loadComments}/>;
+              return <CommentCard key={comment.comment_id} comment={comment} loadComments={loadComments}/>;
             })}
           </section>
         </div>
