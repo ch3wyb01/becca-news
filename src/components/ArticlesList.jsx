@@ -2,20 +2,22 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
+import DropDown from "./DropDown";
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sortValue, setSortValue] = useState('created_at');
 
   const { topic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic).then((articlesFromApi) => {
+    getArticles(topic, sortValue).then((articlesFromApi) => {
       setArticles(articlesFromApi);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sortValue]);
 
   return (
     <div>
@@ -24,6 +26,7 @@ const ArticlesList = () => {
       ) : (
         <main>
           <h1>{topic ? `${topic} articles` : "All articles"}</h1>
+          <DropDown sortValue={sortValue} setSortValue={setSortValue}/>
           {articles.map((article) => {
             return (
               <ArticleCard
