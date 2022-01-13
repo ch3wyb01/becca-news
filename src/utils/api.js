@@ -10,11 +10,17 @@ export const getTopics = () => {
   });
 };
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, sort_by) => {
   let path = "/articles";
+
   if (topic) {
     path += `?topic=${topic}`;
+  } else if (topic && sort_by) {
+    path += `&&sort_by=${sort_by}`
+  } else if (sort_by) {
+    path += `?sort_by=${sort_by}`
   }
+  
   return newsApi.get(path).then((res) => {
     return res.data.articles;
   });
