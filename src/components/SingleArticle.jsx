@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
+import { formatDate } from "../utils/utils";
 import ArticleVotes from "./ArticleVotes";
 import CommentsList from "./CommentsList";
 import ErrorMessage from "./ErrorMessage";
 
-const SingleArticle = ({username}) => {
+const SingleArticle = () => {
   const { article_id } = useParams();
 
   const [article, setArticle] = useState(undefined);
@@ -39,6 +40,7 @@ const SingleArticle = ({username}) => {
                 <h3>{article.topic}</h3>
                 <h4>{article.author}</h4>
                 <p>{article.body}</p>
+                <p>{formatDate(article.created_at)}</p>
                 <ArticleVotes id={article.article_id} votes={article.votes} />
               </div>
               <div>
@@ -48,7 +50,7 @@ const SingleArticle = ({username}) => {
           )}
 
           <section id="comments">
-            <CommentsList article_id={article_id} username={username}/>
+            <CommentsList article_id={article_id} />
           </section>
         </div>
       )}
