@@ -17,6 +17,8 @@ const ArticleCard = ({
         <h2>{title}</h2>
         {!showTopic && <p>{topic}</p>}
         <p>{formatDate(created_at)}</p>
+        <p>Votes: {votes}</p>
+        <p>Comments: {comment_count}</p>
       </div>
     </Link>
   );
