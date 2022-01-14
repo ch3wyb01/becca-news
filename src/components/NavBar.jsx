@@ -1,9 +1,20 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { getTopics } from "../utils/api";
+import {
+  MDBContainer,
+  MDBCollapse,
+  MDBNavbar,
+  MDBNavbarNav,
+  MDBNavbarToggler,
+  MDBNavbarLink,
+  MDBNavbarItem,
+  MDBIcon,
+  MDBNavbarBrand,
+} from "mdb-react-ui-kit";
 
 const NavBar = () => {
   const [topics, setTopics] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     getTopics().then((topicsFromApi) => {
@@ -12,16 +23,39 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav>
-      <Link to="/">All articles</Link>
-      {topics.map((topic) => {
-        return (
-          <Link to={`topics/${topic.slug}`} key={topic.slug}>
-            {topic.slug}
-          </Link>
-        );
-      })}
-    </nav>
+    <header>
+      <MDBNavbar className="p-2" expand="md" light bgColor="white" fixed='top'>
+        <MDBContainer fluid>
+          <MDBNavbarBrand href="/">NC News</MDBNavbarBrand>
+          <MDBNavbarToggler
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <MDBIcon fas icon="bars" />
+          </MDBNavbarToggler>
+          <MDBCollapse navbar show={isExpanded}>
+            <MDBNavbarNav className="justify-content-end">
+              <MDBNavbarItem active>
+                <MDBNavbarLink aria-current="page" href="/">
+                  all articles
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              {topics.map((topic) => {
+                return (
+                  <MDBNavbarItem key={topic.slug}> 
+                    <MDBNavbarLink href={`/topics/${topic.slug}`} >
+                      {topic.slug}
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                );
+              })}
+            </MDBNavbarNav>
+          </MDBCollapse>
+        </MDBContainer>
+      </MDBNavbar>
+    </header>
   );
 };
 
