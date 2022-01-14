@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 import Login from "./components/Login";
+import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
   const [username, setUsername] = useState('jessjelly');
@@ -24,6 +25,7 @@ function App() {
                 path="/articles/:article_id"
                 element={<SingleArticle/>}
               ></Route>
+              <Route path="*" element={<ErrorMessage />} />
             </Routes>
           </BrowserRouter>
         ) : 
