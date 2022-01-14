@@ -40,18 +40,15 @@ const SingleArticle = () => {
               <div>
                 <h2>{article.title}</h2>
                 <h3>{article.topic}</h3>
-                <h4>{article.author}</h4>
-                <p>{article.body}</p>
+                <h5>{article.author}</h5>
                 <p>{formatDate(article.created_at)}</p>
+                <p>{article.body}</p>
                 <ArticleVotes id={article.article_id} votes={article.votes} />
-              </div>
-              <div>
-                <h3>{article.comment_count}</h3>
               </div>
             </>
           )}
           <section id="comments">
-            <CommentsList article_id={article_id} />
+            <CommentsList article_id={article_id} comment_count={article.comment_count}/>
           </section>
         </div>
       )}
