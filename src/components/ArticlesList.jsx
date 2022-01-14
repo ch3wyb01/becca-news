@@ -22,9 +22,11 @@ const ArticlesList = () => {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <div class="spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
       ) : (
-        <main>
+        <main >
           <h1>{topic ? `${topic} articles` : "All articles"}</h1>
           <DropDown sortValue={sortValue} setSortValue={setSortValue}/>
           {articles.map((article) => {
@@ -38,7 +40,7 @@ const ArticlesList = () => {
                 votes={article.votes}
                 comment_count={article.comment_count}
                 topic={article.topic}
-                showTopic={topic}
+                hideTopic={topic}
               />
             );
           })}
