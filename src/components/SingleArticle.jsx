@@ -30,7 +30,9 @@ const SingleArticle = () => {
   return (
     <main>
       {isLoading ? (
-        <p>Loading...</p>
+        <div class="spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
       ) : (
         <div>
           {article && (
@@ -48,7 +50,6 @@ const SingleArticle = () => {
               </div>
             </>
           )}
-
           <section id="comments">
             <CommentsList article_id={article_id} />
           </section>

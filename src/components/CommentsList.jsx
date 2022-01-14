@@ -22,7 +22,9 @@ const CommentsList = ({ article_id }) => {
   return (
     <main>
       {isLoading ? (
-        <p>Loading...</p>
+        <div class="spinner-border text-secondary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
       ) : (
         <div>
           <AddComment article_id={article_id} loadComments={loadComments}/>
