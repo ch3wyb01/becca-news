@@ -1,14 +1,14 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { UserContext } from "./contexts/UserContext";
+import NavBar from "./components/NavBar";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
-import { UserContext } from "./contexts/UserContext";
-import { useState } from "react";
 import Login from "./components/Login";
 
 function App() {
-  const [username, setUsername] = useState(undefined);
+  const [username, setUsername] = useState('jessjelly');
 
   return (
     <UserContext.Provider value={{ username, setUsername }}>
@@ -22,7 +22,7 @@ function App() {
               <Route path="/topics/:topic" element={<ArticlesList />}></Route>
               <Route
                 path="/articles/:article_id"
-                element={<SingleArticle />}
+                element={<SingleArticle/>}
               ></Route>
             </Routes>
           </BrowserRouter>
