@@ -26,7 +26,7 @@ const CommentCard = ({
       <p className="text-start">{body}</p>
       {/* <p>{votes}</p> */}
       {username === author ? (
-        <MDBBtn className="danger" onClick={handleDelete}>Delete comment</MDBBtn>
+        <MDBBtn color="danger" className="px-2" onClick={handleDelete}>Delete comment</MDBBtn>
       ) : null}
       <hr />
     </div>
