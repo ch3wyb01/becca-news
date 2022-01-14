@@ -5,6 +5,7 @@ import { formatDate } from "../utils/utils";
 import ArticleVotes from "./ArticleVotes";
 import CommentsList from "./CommentsList";
 import ErrorMessage from "./ErrorMessage";
+import { MDBBadge } from "mdb-react-ui-kit";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -39,10 +40,10 @@ const SingleArticle = () => {
             <>
               <div>
                 <h2>{article.title}</h2>
-                <h3>{article.topic}</h3>
+                <MDBBadge color='secondary' className="mb-1">{article.topic}</MDBBadge>
                 <h5>{article.author}</h5>
                 <p>{formatDate(article.created_at)}</p>
-                <p>{article.body}</p>
+                <p className="text-start">{article.body}</p>
                 <ArticleVotes id={article.article_id} votes={article.votes} />
               </div>
             </>
