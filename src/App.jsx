@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
 import NavBar from "./components/NavBar";
@@ -9,7 +9,11 @@ import Login from "./components/Login";
 import ErrorMessage from "./components/ErrorMessage";
 
 function App() {
-  const [username, setUsername] = useState('jessjelly');
+  const [username, setUsername] = useState(undefined);
+
+  useEffect(() => {
+    setUsername(sessionStorage.getItem("username"));
+  }, []);
 
   return (
     <UserContext.Provider value={{ username, setUsername }}>
@@ -23,13 +27,14 @@ function App() {
               <Route path="/topics/:topic" element={<ArticlesList />}></Route>
               <Route
                 path="/articles/:article_id"
-                element={<SingleArticle/>}
+                element={<SingleArticle />}
               ></Route>
               <Route path="*" element={<ErrorMessage />} />
             </Routes>
           </BrowserRouter>
-        ) : 
-        <Login />}
+        ) : (
+          <Login />
+        )}
       </div>
     </UserContext.Provider>
   );
