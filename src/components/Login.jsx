@@ -12,9 +12,10 @@ const Login = () => {
     getUsers().then((usersFromApi) => {
       const usernames = usersFromApi.map((user) => user.username);
       const inputtedUser = event.target[0].value;
-      usernames.includes(inputtedUser)
-        ? setUsername(inputtedUser)
-        : setIsInvalid(true);
+      if (usernames.includes(inputtedUser)) {
+        setUsername(inputtedUser);
+        sessionStorage.setItem('username', inputtedUser);
+      } else setIsInvalid(true);
     });
   };
 
