@@ -13,10 +13,10 @@ export const getTopics = () => {
 export const getArticles = (topic, sort_by) => {
   let path = "/articles";
 
-  if (topic) {
+  if (topic && sort_by) {
+    path += `&sort_by=${sort_by}`
+  } else if (topic) {
     path += `?topic=${topic}`;
-  } else if (topic && sort_by) {
-    path += `&&sort_by=${sort_by}`
   } else if (sort_by) {
     path += `?sort_by=${sort_by}`
   }
