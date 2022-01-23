@@ -50,9 +50,9 @@ export const patchArticleVotes = (id) => {
   });
 };
 
-export const postComment = (article_id, body) => {
+export const postComment = (article_id, username, body) => {
   return newsApi
-    .post(`/articles/${article_id}/comments`, { username: "jessjelly", body })
+    .post(`/articles/${article_id}/comments`, { username, body })
     .then((res) => {
       return res.data.comment;
     });
