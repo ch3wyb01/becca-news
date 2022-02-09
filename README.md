@@ -10,7 +10,7 @@ Backend: https://github.com/ch3wyb01/news
 - clone the repo by using the command `git clone https://github.com/ch3wyb01/becca-news.git` in your terminal.
 - `cd` into the newly created directory
 
-#### Once in the project directory:
+#### *Once in the project directory:*
 
 ### Install dependencies:
 - use the command `npm i` to install all dependencies.
@@ -18,7 +18,7 @@ Backend: https://github.com/ch3wyb01/news
 ### Run the app:
 - the command `npm start` runs the app in the development mode, typically on http://localhost:3000
 
-The page will reload when you make changes
+The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 
