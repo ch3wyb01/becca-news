@@ -1,4 +1,4 @@
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { postComment } from "../utils/api";
 import { MDBCard, MDBBtn } from "mdb-react-ui-kit";
 import { useContext } from "react";
