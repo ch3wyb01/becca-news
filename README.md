@@ -2,8 +2,7 @@
 
 This project was created with React. It allows users to sign in and view, comment and vote on articles written about various topics.
 
-Backend: https://github.com/ch3wyb01/news \
-Hosted version: https://becca-news.netlify.app \
+Hosted version: https://becca-news.netlify.app    |  Backend: https://github.com/ch3wyb01/news \
   *note:* log in as one of the pre-defined users: 
 - tickle122
 - grumpy19
