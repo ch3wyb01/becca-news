@@ -4,7 +4,7 @@ This project was created with React. It allows users to sign in and view, commen
 
 Backend: https://github.com/ch3wyb01/news \
 Hosted version: https://becca-news.netlify.app \
-  note: log in as one of the pre-defined users: 
+  *note: log in as one of the pre-defined users: 
 - tickle122
 - grumpy19
 - happyamy2016
