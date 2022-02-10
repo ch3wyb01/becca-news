@@ -4,13 +4,12 @@ const newsApi = axios.create({
   baseURL: "https://becca-news.herokuapp.com/api",
 });
 
-export const getTopics = () => {
-  return newsApi.get("/topics").then((res) => {
-    return res.data.topics;
-  });
+export const getTopics = async () => {
+  const res = await newsApi.get("/topics");
+  return res.data.topics;
 };
 
-export const getArticles = (topic, sort_by) => {
+export const getArticles = async (topic, sort_by) => {
   let path = "/articles";
 
   if (topic && sort_by) {
@@ -21,41 +20,34 @@ export const getArticles = (topic, sort_by) => {
     path += `?sort_by=${sort_by}`
   }
   
-  return newsApi.get(path).then((res) => {
-    return res.data.articles;
-  });
+  const res = await newsApi.get(path);
+  return res.data.articles;
 };
 
-export const getArticleById = (id) => {
-  return newsApi.get(`/articles/${id}`).then((res) => {
-    return res.data.article;
-  });
+export const getArticleById = async (id) => {
+  const res = await newsApi.get(`/articles/${id}`);
+  return res.data.article;
 };
 
-export const getCommentsByArticleId = (id) => {
-  return newsApi.get(`/articles/${id}/comments`).then((res) => {
-    return res.data.comments;
-  });
+export const getCommentsByArticleId = async (id) => {
+  const res = await newsApi.get(`/articles/${id}/comments`);
+  return res.data.comments;
 };
 
-export const getUsers = () => {
-  return newsApi.get("/users").then((res) => {
-    return res.data.users;
-  });
+export const getUsers = async () => {
+  const res = await newsApi.get("/users");
+  return res.data.users;
 };
 
-export const patchArticleVotes = (id) => {
-  return newsApi.patch(`/articles/${id}`, { inc_votes: 1 }).then((res) => {
-    return res.data.article.votes;
-  });
+export const patchArticleVotes = async (id) => {
+  const res = await newsApi.patch(`/articles/${id}`, { inc_votes: 1 });
+  return res.data.article.votes;
 };
 
-export const postComment = (article_id, username, body) => {
-  return newsApi
-    .post(`/articles/${article_id}/comments`, { username, body })
-    .then((res) => {
-      return res.data.comment;
-    });
+export const postComment = async (article_id, username, body) => {
+  const res = await newsApi
+    .post(`/articles/${article_id}/comments`, { username, body });
+  return res.data.comment;
 };
 
 export const deleteComment = (id) => {
