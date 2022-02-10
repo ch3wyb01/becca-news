@@ -8,16 +8,19 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const checkUser = (event) => {
-    setIsLoading(true);
-    event.preventDefault();
     setIsInvalid(false);
+    event.preventDefault();
+    setIsLoading(true);
     getUsers().then((usersFromApi) => {
       const usernames = usersFromApi.map((user) => user.username);
       const inputtedUser = event.target[0].value;
       if (usernames.includes(inputtedUser)) {
         setUsername(inputtedUser);
         sessionStorage.setItem("username", inputtedUser);
-      } else setIsInvalid(true);
+      } else {
+        setIsInvalid(true)
+        setIsLoading(false);
+      };
     });
   };
 
@@ -26,7 +29,7 @@ const Login = () => {
       {isLoading ? (
         <div>
           <div class="spinner-border text-secondary" role="status"></div>
-          <p>Logging in...</p>
+          <p>Loading</p>
         </div>
       ) : (
         <div>
