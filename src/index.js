@@ -5,7 +5,6 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const dayjs = require('dayjs');
 
 ReactDOM.render(
   <React.StrictMode>
