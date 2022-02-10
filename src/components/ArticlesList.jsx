@@ -3,11 +3,13 @@ import { useParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import DropDown from "./DropDown";
+import ErrorMessage from "./ErrorMessage";
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [sortValue, setSortValue] = useState('created_at');
+  const [sortValue, setSortValue] = useState("created_at");
+  const [error, setError] = useState(null);
 
   const { topic } = useParams();
 
@@ -16,19 +18,24 @@ const ArticlesList = () => {
     getArticles(topic, sortValue).then((articlesFromApi) => {
       setArticles(articlesFromApi);
       setIsLoading(false);
+    })
+    .catch((err) => {
+      setError("That topic doesn't exist");
     });
   }, [topic, sortValue]);
+
+  if (error) return <ErrorMessage message={error} />;
 
   return (
     <div>
       {isLoading ? (
         <div class="spinner-border text-secondary" role="status">
-        <span class="visually-hidden">Loading...</span>
-      </div>
+          <span class="visually-hidden">Loading...</span>
+        </div>
       ) : (
-        <main >
+        <main>
           <h1>{topic ? `${topic} articles` : "All articles"}</h1>
-          <DropDown sortValue={sortValue} setSortValue={setSortValue}/>
+          <DropDown sortValue={sortValue} setSortValue={setSortValue} />
           {articles.map((article) => {
             return (
               <ArticleCard
