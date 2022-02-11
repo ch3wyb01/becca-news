@@ -4,15 +4,31 @@ import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
 
 const ArticleVotes = ({ id, votes }) => {
   const [articleVotes, setArticleVotes] = useState(votes);
+  const [hasVoted, setHasVoted] = useState(false);
 
   const handleClick = () => {
-    setArticleVotes((currVotes) => currVotes + 1);
-    patchArticleVotes(id).catch(() => {
-        setArticleVotes((currVotes) => currVotes - 1)
-    });
+    if (!hasVoted) {
+      setArticleVotes((currVotes) => currVotes + 1);
+      setHasVoted(true);
+      patchArticleVotes(id, 1).catch(() => {
+        setArticleVotes((currVotes) => currVotes - 1);
+        setHasVoted(false);
+      });
+    } else {
+      setArticleVotes((currVotes) => currVotes - 1);
+      setHasVoted(false);
+      patchArticleVotes(id, -1).catch(() => {
+        setArticleVotes((currVotes) => currVotes + 1);
+        setHasVoted(true);
+      });
+    }
   };
 
-  return <MDBBtn className="px-2 py-1" onClick={handleClick}>{articleVotes} <MDBIcon far icon="star" /></MDBBtn>;
+  return (
+    <MDBBtn className={`px-2 py-1 `} onClick={handleClick}>
+      {articleVotes} <MDBIcon far icon="star" />
+    </MDBBtn>
+  );
 };
 
 export default ArticleVotes;
