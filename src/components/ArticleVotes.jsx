@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { patchArticleVotes } from "../utils/api";
 import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
-const ArticleVotes = ({ id, votes }) => {
+const ArticleVotes = ({ id, votes, author }) => {
   const [articleVotes, setArticleVotes] = useState(votes);
   const [hasVoted, setHasVoted] = useState(false);
+
+  const { username } = useContext(UserContext);
 
   const handleClick = () => {
     if (!hasVoted) {
@@ -25,7 +29,10 @@ const ArticleVotes = ({ id, votes }) => {
   };
 
   return (
-    <MDBBtn className={`px-2 py-1 `} onClick={handleClick}>
+    <MDBBtn
+      className={`px-2 py-1 ${username === author ? "disabled" : ""}`}
+      onClick={handleClick}
+    >
       {articleVotes} <MDBIcon far icon="star" />
     </MDBBtn>
   );
