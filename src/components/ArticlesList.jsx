@@ -24,9 +24,9 @@ const ArticlesList = () => {
         setTotalCount(total);
         setIsLoading(false);
       })
-      .catch((err) => {
-        setError("That topic doesn't exist");
-      });
+      .catch(() => {
+          setError("That topic doesn't exist");
+        });
   }, [topic, sortValue, page]);
 
   if (error) return <ErrorMessage message={error} />;
@@ -57,7 +57,7 @@ const ArticlesList = () => {
               />
             );
           })}
-          <PaginationNav page={page} setPage={setPage} totalCount={totalCount}/>
+          <PaginationNav page={page} setPage={setPage} totalCount={totalCount} sortValue={sortValue}/>
         </main>
       )}
     </div>
