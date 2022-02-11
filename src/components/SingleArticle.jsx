@@ -44,7 +44,7 @@ const SingleArticle = () => {
                 <h5>{article.author}</h5>
                 <p>{formatDate(article.created_at)}</p>
                 <p className="text-start">{article.body}</p>
-                <ArticleVotes id={article.article_id} votes={article.votes} />
+                <ArticleVotes id={article.article_id} votes={article.votes} author={article.author}/>
               </div>
             </>
           )}
