@@ -31,9 +31,9 @@ export const getUsers = async () => {
   return res.data.users;
 };
 
-export const patchArticleVotes = async (id, inc_votes) => {
-  const res = await newsApi.patch(`/articles/${id}`, { inc_votes });
-  return res.data.article.votes;
+export const patchVotes = async (resource, id, inc_votes) => {
+  const res = await newsApi.patch(`/${resource}/${id}`, { inc_votes });
+  return res.data[resource.slice(0, -1)].votes;
 };
 
 export const postComment = async (article_id, username, body) => {
