@@ -5,24 +5,30 @@ import ArticleCard from "./ArticleCard";
 import DropDown from "./DropDown";
 import ErrorMessage from "./ErrorMessage";
 
+const articleLimit = 10;
+
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [sortValue, setSortValue] = useState("created_at");
   const [error, setError] = useState(null);
+  const [totalCount, setTotalCount] = useState(0);
+  const [page, setPage] = useState(1);
 
   const { topic } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic, sortValue).then((articlesFromApi) => {
-      setArticles(articlesFromApi);
-      setIsLoading(false);
-    })
-    .catch((err) => {
-      setError("That topic doesn't exist");
-    });
-  }, [topic, sortValue]);
+    getArticles(topic, sortValue, page)
+      .then(({ articles, total }) => {
+        setArticles(articles);
+        setTotalCount(total);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError("That topic doesn't exist");
+      });
+  }, [topic, sortValue, page]);
 
   if (error) return <ErrorMessage message={error} />;
 
@@ -51,6 +57,22 @@ const ArticlesList = () => {
               />
             );
           })}
+          <button
+            disabled={page === 1}
+            onClick={() => {
+              setPage((currPage) => currPage - 1);
+            }}
+          >
+            Previous
+          </button>
+          <button
+            disabled={articleLimit * page >= totalCount}
+            onClick={() => {
+              setPage((currPage) => currPage + 1);
+            }}
+          >
+            Next
+          </button>
         </main>
       )}
     </div>
