@@ -4,8 +4,7 @@ import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import DropDown from "./DropDown";
 import ErrorMessage from "./ErrorMessage";
-
-const articleLimit = 10;
+import PaginationNav from "./PaginationNav";
 
 const ArticlesList = () => {
   const [articles, setArticles] = useState([]);
@@ -42,6 +41,7 @@ const ArticlesList = () => {
         <main>
           <h1>{topic ? `${topic} articles` : "All articles"}</h1>
           <DropDown sortValue={sortValue} setSortValue={setSortValue} />
+          <PaginationNav page={page} setPage={setPage} totalCount={totalCount}/>
           {articles.map((article) => {
             return (
               <ArticleCard
@@ -57,22 +57,7 @@ const ArticlesList = () => {
               />
             );
           })}
-          <button
-            disabled={page === 1}
-            onClick={() => {
-              setPage((currPage) => currPage - 1);
-            }}
-          >
-            Previous
-          </button>
-          <button
-            disabled={articleLimit * page >= totalCount}
-            onClick={() => {
-              setPage((currPage) => currPage + 1);
-            }}
-          >
-            Next
-          </button>
+          <PaginationNav page={page} setPage={setPage} totalCount={totalCount}/>
         </main>
       )}
     </div>
