@@ -28,7 +28,7 @@ const Login = () => {
     <main>
       {isLoading ? (
         <div>
-          <div class="spinner-border text-secondary" role="status"></div>
+          <div className="spinner-border text-secondary" role="status"></div>
           <p>Loading</p>
         </div>
       ) : (
