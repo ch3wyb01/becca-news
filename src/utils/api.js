@@ -9,19 +9,11 @@ export const getTopics = async () => {
   return res.data.topics;
 };
 
-export const getArticles = async (topic, sort_by) => {
-  let path = "/articles";
-
-  if (topic && sort_by) {
-    path += `?topic=${topic}&sort_by=${sort_by}`
-  } else if (topic) {
-    path += `?topic=${topic}`;
-  } else if (sort_by) {
-    path += `?sort_by=${sort_by}`
-  }
-  
-  const res = await newsApi.get(path);
-  return res.data.articles;
+export const getArticles = async (topic, sort_by, p) => {
+  const { data } = await newsApi.get("/articles", {
+    params: { topic, sort_by, p },
+  });
+  return data;
 };
 
 export const getArticleById = async (id) => {
@@ -45,8 +37,10 @@ export const patchArticleVotes = async (id) => {
 };
 
 export const postComment = async (article_id, username, body) => {
-  const res = await newsApi
-    .post(`/articles/${article_id}/comments`, { username, body });
+  const res = await newsApi.post(`/articles/${article_id}/comments`, {
+    username,
+    body,
+  });
   return res.data.comment;
 };
 
