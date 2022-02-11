@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { patchArticleVotes } from "../utils/api";
+import { patchVotes } from "../utils/api";
 import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
@@ -14,14 +14,14 @@ const ArticleVotes = ({ id, votes, author }) => {
     if (!hasVoted) {
       setArticleVotes((currVotes) => currVotes + 1);
       setHasVoted(true);
-      patchArticleVotes(id, 1).catch(() => {
+      patchVotes("articles", id, 1).catch(() => {
         setArticleVotes((currVotes) => currVotes - 1);
         setHasVoted(false);
       });
     } else {
       setArticleVotes((currVotes) => currVotes - 1);
       setHasVoted(false);
-      patchArticleVotes(id, -1).catch(() => {
+      patchVotes("articles", id, -1).catch(() => {
         setArticleVotes((currVotes) => currVotes + 1);
         setHasVoted(true);
       });
