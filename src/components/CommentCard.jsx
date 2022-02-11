@@ -26,10 +26,12 @@ const CommentCard = ({
       <p><small>{formatDate(created_at)}</small></p>
       </div>
       <p className="text-start">{body}</p>
+      <div className="d-flex flex-column align-items-center"> 
       <CommentVotes id={comment_id} votes={votes} author={author}/>
       {username === author ? (
-        <MDBBtn color="danger" className="px-2" onClick={handleDelete}>Delete comment</MDBBtn>
+        <MDBBtn color="danger" className="px-2 mt-2" onClick={handleDelete}>Delete comment</MDBBtn>
       ) : null}
+      </div>
       <hr />
     </div>
   );
