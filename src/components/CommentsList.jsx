@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getCommentsByArticleId } from "../utils/api";
 import AddComment from "./AddComment";
 import CommentCard from "./CommentCard";
-import { MDBCard, MDBCardBody, MDBCardHeader } from "mdb-react-ui-kit";
+import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";
 
 const CommentsList = ({ article_id, comment_count }) => {
   const [comments, setComments] = useState([]);
@@ -11,8 +11,6 @@ const CommentsList = ({ article_id, comment_count }) => {
   useEffect(() => {
     setIsLoading(true);
     getCommentsByArticleId(article_id).then((commentsFromApi) => {
-      const latestComments = orderComments(commentsFromApi);
-      setComments(latestComments);
       setComments(commentsFromApi);
       setIsLoading(false);
     });
