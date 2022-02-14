@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { getUser } from "../utils/api";
+import UserArticlesList from "./UserArticlesList";
 
 const ProfilePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +24,10 @@ const ProfilePage = () => {
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <h1>Welcome back, {user.name}</h1>
+        <div>
+          <h1>Welcome back, {user.name}</h1>
+          <UserArticlesList username={username} />
+        </div>
       )}
     </div>
   );
