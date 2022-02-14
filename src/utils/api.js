@@ -52,3 +52,8 @@ export const getUser = async (username) => {
   const res = await newsApi.get(`/users/${username}`);
   return res.data.user;
 };
+
+export const getUserArticles = async (username) => {
+  const res = await newsApi.get(`/articles?author=${username}`);
+  return res.data.articles;
+};
