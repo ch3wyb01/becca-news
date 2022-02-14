@@ -17,6 +17,7 @@ const ArticleCard = ({
   author,
   comment_count,
   hideTopic,
+  hideAuthor,
 }) => {
   return (
     <MDBCard className="shadow my-4 mx-auto px-2">
@@ -24,7 +25,7 @@ const ArticleCard = ({
         <MDBCardTitle tag="h4" className="mb-1">
           {title}
         </MDBCardTitle>
-        <MDBCardSubTitle tag="h6">By {author}</MDBCardSubTitle>
+        {!hideAuthor && <MDBCardSubTitle tag="h6">By {author}</MDBCardSubTitle>}
         <MDBCardSubTitle>{formatDate(created_at)}</MDBCardSubTitle>
         <div
           className={`d-flex ${
