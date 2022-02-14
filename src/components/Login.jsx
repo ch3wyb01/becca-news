@@ -1,6 +1,14 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { getUsers } from "../utils/api";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardSubTitle,
+  MDBBtn,
+  MDBInput,
+} from "mdb-react-ui-kit";
 
 const Login = () => {
   const { username, setUsername } = useContext(UserContext);
@@ -18,9 +26,9 @@ const Login = () => {
         setUsername(inputtedUser);
         sessionStorage.setItem("username", inputtedUser);
       } else {
-        setIsInvalid(true)
+        setIsInvalid(true);
         setIsLoading(false);
-      };
+      }
     });
   };
 
@@ -33,12 +41,17 @@ const Login = () => {
         </div>
       ) : (
         <div>
-          <p>Login</p>
-          <form onSubmit={(event) => checkUser(event)}>
-            <input type="text" name="username" />
-            <button type="submit">Login</button>
-          </form>
+          <h1>NC News</h1>
+          <MDBCard className="shadow my-4 mx-auto px-2" >
+            <MDBCardBody>
+              <MDBCardTitle>Login</MDBCardTitle>
+              <form onSubmit={(event) => checkUser(event)} className="d-flex justify-content-center">
+                <MDBInput label="Username" type="text" />
+              <MDBBtn type="submit">Log in</MDBBtn>
+              </form>
+            </MDBCardBody>
           {isInvalid && <p>Invalid username</p>}
+          </MDBCard>
         </div>
       )}
     </main>
