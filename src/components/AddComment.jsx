@@ -4,21 +4,31 @@ import { MDBCard, MDBBtn } from "mdb-react-ui-kit";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-const AddComment = ({ article_id, loadComments }) => {
-  const [comment, setComment] = useState("");
+const AddComment = ({ article_id, setComments, comments }) => {
+  const [newComment, setNewComment] = useState("");
   const { username } = useContext(UserContext);
+  const [isEmptyComment, setIsEmptyComment] = useState(undefined);
 
   const handleChange = (event) => {
-    setComment(event.target.value);
+    setNewComment(event.target.value);
   };
 
   const addComment = (event) => {
     event.preventDefault();
     const body = event.target[0].value;
-    postComment(article_id, username, body).then(() => {
-      setComment("");
-      loadComments();
-    });
+    if (!body) {
+      setIsEmptyComment(true);
+    } else {
+      setIsEmptyComment(false);
+      setNewComment("");
+      postComment(article_id, username, body)
+        .then((commentFromApi) => {
+          setComments([commentFromApi, ...comments]);
+        })
+        .catch(() => {
+          setComments(comments);
+        });
+    }
   };
 
   return (
@@ -29,8 +39,9 @@ const AddComment = ({ article_id, loadComments }) => {
           name="body"
           cols="20"
           rows="5"
-          value={comment}
+          value={newComment}
         ></textarea>
+        {isEmptyComment ? <p>Comment cannot be empty</p> : null}
         <MDBBtn className="align-self-center mt-3 px-2" type="submit">
           Add comment
         </MDBBtn>
