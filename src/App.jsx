@@ -7,6 +7,7 @@ import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 import Login from "./components/Login";
 import ErrorMessage from "./components/ErrorMessage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const [username, setUsername] = useState(undefined);
@@ -29,6 +30,7 @@ function App() {
                 path="/articles/:article_id"
                 element={<SingleArticle />}
               ></Route>
+              <Route path="/profile" element={<ProfilePage />}></Route>
               <Route path="*" element={<ErrorMessage />} />
             </Routes>
           </BrowserRouter>
