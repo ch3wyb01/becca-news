@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { postComment } from "../utils/api";
-import { MDBCard, MDBBtn } from "mdb-react-ui-kit";
+import { MDBCard, MDBBtn, MDBInput } from "mdb-react-ui-kit";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
@@ -34,13 +34,13 @@ const AddComment = ({ article_id, setComments, comments }) => {
   return (
     <MDBCard className="shadow px-5 py-4 mt-4 mx-2">
       <form onSubmit={addComment} className="d-flex flex-column">
-        <textarea
+        <MDBInput
+          label="Comment"
+          textarea
+          rows={5}
           onChange={handleChange}
-          name="body"
-          cols="20"
-          rows="5"
           value={newComment}
-        ></textarea>
+        />
         {isEmptyComment ? <p>Comment cannot be empty</p> : null}
         <MDBBtn className="align-self-center mt-3 px-2" type="submit">
           Add comment
