@@ -11,10 +11,19 @@ import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const [username, setUsername] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setUsername(sessionStorage.getItem("username"));
+    setIsLoading(false);
   }, []);
+
+  if (isLoading)
+    return (
+      <div className="spinner-border text-secondary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    );
 
   return (
     <UserContext.Provider value={{ username, setUsername }}>
