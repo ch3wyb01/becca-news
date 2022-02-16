@@ -7,8 +7,8 @@ const PaginationNav = ({ page, setPage, totalCount }) => {
   const pageNums = Array(totalPages).fill("page");
 
   return (
-    <nav aria-label="Page navigation">
-      <ul className="pagination mb-0 mx-5 d-flex justify-content-center">
+    <nav aria-label="Page navigation" className="mt-3 mb-0">
+      <ul className="pagination d-flex justify-content-center me-4">
         <MDBPaginationItem
           className={`d-flex ${page === 1 ? "page-item disabled" : ""}`}
         >
@@ -21,9 +21,9 @@ const PaginationNav = ({ page, setPage, totalCount }) => {
             <span aria-hidden="true">« Previous</span>
           </MDBPaginationLink>
         </MDBPaginationItem>
-        {pageNums.map((page, i) => {
+        {pageNums.map((p, i) => {
           return (
-            <MDBPaginationItem>
+            <MDBPaginationItem className={`pagination-circle ${i + 1 === page ? "page-item active" : ""}`}>
               <MDBPaginationLink
                 onClick={() => {
                   setPage(i + 1);
