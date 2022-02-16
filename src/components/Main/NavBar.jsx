@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getTopics } from "../../utils/api";
+import { UserContext } from "../../contexts/UserContext";
 import {
   MDBContainer,
   MDBCollapse,
@@ -15,6 +16,7 @@ import {
 const NavBar = () => {
   const [topics, setTopics] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { username } = useContext(UserContext);
 
   useEffect(() => {
     getTopics().then((topicsFromApi) => {
@@ -24,7 +26,7 @@ const NavBar = () => {
 
   return (
     <header>
-      <MDBNavbar className="p-2" expand="md" light bgColor="white" fixed='top'>
+      <MDBNavbar className="p-2" expand="md" light bgColor="white" fixed="top">
         <MDBContainer fluid>
           <MDBNavbarBrand href="/">NC News</MDBNavbarBrand>
           <MDBNavbarToggler
@@ -44,13 +46,16 @@ const NavBar = () => {
               </MDBNavbarItem>
               {topics.map((topic) => {
                 return (
-                  <MDBNavbarItem key={topic.slug}> 
-                    <MDBNavbarLink href={`/topics/${topic.slug}`} >
+                  <MDBNavbarItem key={topic.slug}>
+                    <MDBNavbarLink href={`/topics/${topic.slug}`}>
                       {topic.slug}
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                 );
               })}
+              <MDBNavbarItem>
+                <MDBNavbarLink href="/profile">{username}</MDBNavbarLink>
+              </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
