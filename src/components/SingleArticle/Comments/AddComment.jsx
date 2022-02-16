@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { postComment } from "../utils/api";
+import { postComment } from "../../../utils/api";
 import { MDBCard, MDBBtn, MDBInput } from "mdb-react-ui-kit";
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../../contexts/UserContext";
 
 const AddComment = ({ article_id, setComments, comments }) => {
   const [newComment, setNewComment] = useState("");

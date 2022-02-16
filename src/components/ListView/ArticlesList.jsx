@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticles } from "../utils/api";
+import { getArticles } from "../../utils/api";
 import ArticleCard from "./ArticleCard";
 import DropDown from "./DropDown";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../Main/ErrorMessage";
 import PaginationNav from "./PaginationNav";
 
 const ArticlesList = () => {

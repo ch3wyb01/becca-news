@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { getUsers } from "../utils/api";
+import { UserContext } from "../../contexts/UserContext";
+import { getUsers } from "../../utils/api";
 import {
   MDBCard,
   MDBCardBody,

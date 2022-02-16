@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getTopics } from "../utils/api";
+import { getTopics } from "../../utils/api";
 import {
   MDBContainer,
   MDBCollapse,

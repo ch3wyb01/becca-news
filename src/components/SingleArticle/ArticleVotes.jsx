@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { patchVotes } from "../utils/api";
+import { patchVotes } from "../../utils/api";
 import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 const ArticleVotes = ({ id, votes, author }) => {
   const [articleVotes, setArticleVotes] = useState(votes);

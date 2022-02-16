@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById } from "../utils/api";
-import { formatDate } from "../utils/utils";
+import { getArticleById } from "../../utils/api";
+import { formatDate } from "../../utils/utils";
 import ArticleVotes from "./ArticleVotes";
-import CommentsList from "./CommentsList";
-import ErrorMessage from "./ErrorMessage";
+import CommentsList from "./Comments/CommentsList";
+import ErrorMessage from "../Main/ErrorMessage";
 import { MDBBadge } from "mdb-react-ui-kit";
 
 const SingleArticle = () => {

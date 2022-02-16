@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { deleteComment } from "../utils/api";
-import { UserContext } from "../contexts/UserContext";
-import { formatDate } from "../utils/utils";
+import { deleteComment } from "../../../utils/api";
+import { UserContext } from "../../../contexts/UserContext";
+import { formatDate } from "../../../utils/utils";
 import { MDBBtn } from "mdb-react-ui-kit";
 import CommentVotes from "./CommentVotes";
 

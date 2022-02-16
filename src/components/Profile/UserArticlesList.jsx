@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { getUserArticles } from "../utils/api";
-import ArticleCard from "./ArticleCard";
+import { getUserArticles } from "../../utils/api";
+import ArticleCard from "../ListView/ArticleCard";
 
 const UserArticlesList = ({ username }) => {
   const [articles, setArticles] = useState([]);

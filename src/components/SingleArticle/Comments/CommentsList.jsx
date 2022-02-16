@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCommentsByArticleId } from "../utils/api";
+import { getCommentsByArticleId } from "../../../utils/api";
 import AddComment from "./AddComment";
 import CommentCard from "./CommentCard";
 import { MDBCard, MDBCardBody } from "mdb-react-ui-kit";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
-import { getUser } from "../utils/api";
+import { UserContext } from "../../contexts/UserContext";
+import { getUser } from "../../utils/api";
 import UserArticlesList from "./UserArticlesList";
 
 const ProfilePage = () => {

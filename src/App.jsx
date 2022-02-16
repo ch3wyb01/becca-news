@@ -2,12 +2,12 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
-import NavBar from "./components/NavBar";
-import ArticlesList from "./components/ArticlesList";
-import SingleArticle from "./components/SingleArticle";
-import Login from "./components/Login";
-import ErrorMessage from "./components/ErrorMessage";
-import ProfilePage from "./components/ProfilePage";
+import NavBar from "./components/Main/NavBar";
+import ArticlesList from "./components/ListView/ArticlesList";
+import SingleArticle from "./components/SingleArticle/SingleArticle";
+import Login from "./components/Main/Login";
+import ErrorMessage from "./components/Main/ErrorMessage";
+import ProfilePage from "./components/Profile/ProfilePage";
 
 function App() {
   const [username, setUsername] = useState(undefined);
