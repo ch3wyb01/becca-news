@@ -1,27 +1,36 @@
 import { useState } from "react";
-import { patchVotes } from "../../utils/api";
+import {
+  deleteArticleVote,
+  patchVotes,
+  postArticleVote,
+} from "../../utils/api";
 import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 
-const ArticleVotes = ({ id, votes, author }) => {
-  const [articleVotes, setArticleVotes] = useState(votes);
-  const [hasVoted, setHasVoted] = useState(false);
-
+const ArticleVotes = ({ id, votes, voters, author }) => {
   const { username } = useContext(UserContext);
+  const [articleVotes, setArticleVotes] = useState(votes);
+  const [hasVoted, setHasVoted] = useState(voters.includes(username));
 
   const handleClick = () => {
     if (!hasVoted) {
       setArticleVotes((currVotes) => currVotes + 1);
       setHasVoted(true);
-      patchVotes("articles", id, 1).catch(() => {
+      Promise.all([
+        postArticleVote(username, id),
+        patchVotes("articles", id, 1),
+      ]).catch(() => {
         setArticleVotes((currVotes) => currVotes - 1);
         setHasVoted(false);
       });
     } else {
       setArticleVotes((currVotes) => currVotes - 1);
       setHasVoted(false);
-      patchVotes("articles", id, -1).catch(() => {
+      Promise.all([
+        deleteArticleVote(username, id),
+        patchVotes("articles", id, -1),
+      ]).catch(() => {
         setArticleVotes((currVotes) => currVotes + 1);
         setHasVoted(true);
       });
