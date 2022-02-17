@@ -26,7 +26,8 @@ const ProfilePage = () => {
       ) : (
         <div>
           <h1>Welcome back, {user.name}</h1>
-          <UserArticlesList username={username} />
+          <UserArticlesList username={username} isAuthor={true}/>
+          <UserArticlesList username={username} isAuthor={false}/>
         </div>
       )}
     </div>
