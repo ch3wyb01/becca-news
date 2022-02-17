@@ -1,19 +1,23 @@
 import { useState, useEffect } from "react";
-import { getUserArticles } from "../../utils/api";
+import { getUserArticles, getUserVotedArticles } from "../../utils/api";
 import ArticleCard from "../ListView/ArticleCard";
 
-const UserArticlesList = ({ username }) => {
+const UserArticlesList = ({ username, isAuthor }) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    getUserArticles(username).then((articlesFromApi) => {
-      setArticles(articlesFromApi);
-    });
+    isAuthor
+      ? getUserArticles(username).then((articlesFromApi) => {
+          setArticles(articlesFromApi);
+        })
+      : getUserVotedArticles(username).then((articlesFromApi) => {
+          setArticles(articlesFromApi);
+        });
   }, []);
 
   return (
     <div>
-      <h3>Authored Articles</h3>
+      <h3>{isAuthor ? "Authored Articles" : "Voted Articles"}</h3>
       {articles.map((article) => {
         return (
           <ArticleCard
@@ -25,7 +29,7 @@ const UserArticlesList = ({ username }) => {
             votes={article.votes}
             comment_count={article.comment_count}
             topic={article.topic}
-            hideAuthor={username}
+            hideAuthor={isAuthor}
           />
         );
       })}
