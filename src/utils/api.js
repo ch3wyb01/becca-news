@@ -62,3 +62,16 @@ export const getUserVotedArticles = async (username) => {
   const res = await newsApi.get(`/users/${username}/voted_articles`);
   return res.data.articles;
 };
+
+export const postArticleVote = async (username, article_id) => {
+  const res = await newsApi.post(`/users/${username}/voted_articles`, {
+    article_id,
+  });
+  return res.data.article;
+};
+
+export const deleteArticleVote = async (username, article_id) => {
+  return newsApi.delete(`/users/${username}/voted_articles`, {
+    data: { article_id },
+  });
+};
