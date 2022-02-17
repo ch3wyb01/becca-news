@@ -57,3 +57,8 @@ export const getUserArticles = async (username) => {
   const res = await newsApi.get(`/articles?author=${username}`);
   return res.data.articles;
 };
+
+export const getUserVotedArticles = async (username) => {
+  const res = await newsApi.get(`/users/${username}/voted_articles`);
+  return res.data.articles;
+};
