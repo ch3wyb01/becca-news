@@ -13,12 +13,14 @@ const SingleArticle = () => {
   const [article, setArticle] = useState(undefined);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [voters, setVoters] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
     getArticleById(article_id)
       .then((articleFromApi) => {
         setArticle(articleFromApi);
+        setVoters(articleFromApi.voted_by);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -32,24 +34,34 @@ const SingleArticle = () => {
     <main>
       {isLoading ? (
         <div className="spinner-border text-secondary" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
+          <span className="visually-hidden">Loading...</span>
+        </div>
       ) : (
         <div>
           {article && (
             <>
               <div>
                 <h2>{article.title}</h2>
-                <MDBBadge color='secondary' className="mb-1">{article.topic}</MDBBadge>
+                <MDBBadge color="secondary" className="mb-1">
+                  {article.topic}
+                </MDBBadge>
                 <h5>{article.author}</h5>
                 <p>{formatDate(article.created_at)}</p>
                 <p className="text-start">{article.body}</p>
-                <ArticleVotes id={article.article_id} votes={article.votes} author={article.author}/>
+                <ArticleVotes
+                  id={article.article_id}
+                  votes={article.votes}
+                  author={article.author}
+                  voters={voters}
+                />
               </div>
             </>
           )}
           <section id="comments">
-            <CommentsList article_id={article_id} comment_count={article.comment_count}/>
+            <CommentsList
+              article_id={article_id}
+              comment_count={article.comment_count}
+            />
           </section>
         </div>
       )}
