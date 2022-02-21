@@ -43,7 +43,6 @@ const PaginationNav = ({ page, setPage, totalCount }) => {
           <MDBPaginationLink
             onClick={() => {
               setPage((currPage) => currPage + 1);
-              console.log(pageNums);
             }}
             aria-label="Next"
           >
