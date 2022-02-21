@@ -5,13 +5,12 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardSubTitle,
   MDBBtn,
   MDBInput,
 } from "mdb-react-ui-kit";
 
 const Login = () => {
-  const { username, setUsername } = useContext(UserContext);
+  const { setUsername } = useContext(UserContext);
   const [isInvalid, setIsInvalid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,15 +41,21 @@ const Login = () => {
       ) : (
         <div>
           <h1>NC News</h1>
-          <MDBCard className="shadow my-4 mx-auto px-2" >
+          <MDBCard className="shadow my-4 mx-auto px-2">
             <MDBCardBody>
               <MDBCardTitle>Login</MDBCardTitle>
-              <form onSubmit={(event) => checkUser(event)} className="d-flex justify-content-center">
+              <form
+                onSubmit={(event) => checkUser(event)}
+                id="login-form"
+                className="d-flex flex-column justify-content-between align-items-center"
+              >
                 <MDBInput label="Username" type="text" />
-              <MDBBtn type="submit">Log in</MDBBtn>
+                <MDBBtn type="submit" className="mt-2 px-3">
+                  Log in
+                </MDBBtn>
               </form>
             </MDBCardBody>
-          {isInvalid && <p>Invalid username</p>}
+            {isInvalid && <p>Invalid username</p>}
           </MDBCard>
         </div>
       )}
