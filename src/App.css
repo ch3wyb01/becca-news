@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+.dropdown {
+  position: relative;
+  z-index: 1050;
+}
+
+.dropdown-toggle.nav-link {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+ul.dropdown-menu {
+  background-color: white;
+  z-index: 1050 !important;
+}
+
+a.dropdown-item {
+  background-color: white !important;
+  z-index: 1050;
+}
