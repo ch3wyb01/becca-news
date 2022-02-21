@@ -55,3 +55,11 @@ a.dropdown-item {
   background-color: white !important;
   z-index: 1050;
 }
+
+#profile-greeting {
+  font-size: 1.75rem;
+}
+
+#profile-list {
+  font-size: 1.5rem;
+}

@@ -24,11 +24,11 @@ const ProfilePage = () => {
           <span className="visually-hidden">Loading...</span>
         </div>
       ) : (
-        <div>
-          <h1>Welcome back, {user.name}</h1>
+        <main>
+          <h1 id="profile-greeting">Welcome back, {user.name}</h1>
           <UserArticlesList username={username} isAuthor={true}/>
           <UserArticlesList username={username} isAuthor={false}/>
-        </div>
+        </main>
       )}
     </div>
   );

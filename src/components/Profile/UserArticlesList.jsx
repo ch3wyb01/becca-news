@@ -17,7 +17,7 @@ const UserArticlesList = ({ username, isAuthor }) => {
 
   return (
     <div>
-      <h3>{isAuthor ? "Authored Articles" : "Voted Articles"}</h3>
+      <h3 id="profile-list">{isAuthor ? "Authored Articles" : "Voted Articles"}</h3>
       {articles.map((article) => {
         return (
           <ArticleCard
