@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { getTopics } from "../../utils/api";
 import { UserContext } from "../../contexts/UserContext";
 import {
@@ -11,18 +12,32 @@ import {
   MDBNavbarItem,
   MDBIcon,
   MDBNavbarBrand,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+  MDBDropdownLink,
+  MDBBtn,
 } from "mdb-react-ui-kit";
 
 const NavBar = () => {
   const [topics, setTopics] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
-  const { username } = useContext(UserContext);
+  const { username, setUsername } = useContext(UserContext);
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     getTopics().then((topicsFromApi) => {
       setTopics(topicsFromApi);
     });
   }, []);
+
+  const handleLogOut = () => {
+    setUsername(undefined);
+    sessionStorage.setItem("username", undefined);
+    navigate('/');
+  };
 
   return (
     <header>
@@ -38,7 +53,7 @@ const NavBar = () => {
             <MDBIcon fas icon="bars" />
           </MDBNavbarToggler>
           <MDBCollapse navbar show={isExpanded}>
-            <MDBNavbarNav className="justify-content-end">
+            <MDBNavbarNav className="justify-content-center">
               <MDBNavbarItem active>
                 <MDBNavbarLink aria-current="page" href="/">
                   all articles
@@ -54,9 +69,48 @@ const NavBar = () => {
                 );
               })}
               <MDBNavbarItem>
-                <MDBNavbarLink href="/profile">{username}</MDBNavbarLink>
+                <hr />
               </MDBNavbarItem>
             </MDBNavbarNav>
+            {!isExpanded ? (
+              <MDBDropdown>
+                <MDBDropdownToggle tag="a" className="nav-link">
+                  <MDBIcon fas icon="user-alt" /> {username}
+                </MDBDropdownToggle>
+                <MDBDropdownMenu className="d-flex flex-column align-items-center">
+                  <MDBDropdownItem className="mb-2">
+                    <MDBDropdownLink href="/profile">Profile</MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBBtn
+                      className="my-2 p-2"
+                      color="danger"
+                      onClick={() => handleLogOut()}
+                    >
+                      Log out
+                    </MDBBtn>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+            ) : (
+              <MDBNavbarNav>
+                <MDBNavbarItem className="mb-2">
+                  <MDBIcon fas icon="user-alt" /> {username}
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBNavbarLink href="/profile">Profile</MDBNavbarLink>
+                </MDBNavbarItem>
+                <MDBNavbarItem>
+                  <MDBBtn
+                    className="mt-1 mb-1 p-2"
+                    color="danger"
+                    onClick={() => handleLogOut()}
+                  >
+                    Log out
+                  </MDBBtn>
+                </MDBNavbarItem>
+              </MDBNavbarNav>
+            )}
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
