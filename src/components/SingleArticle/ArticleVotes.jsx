@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   deleteArticleVote,
-  patchVotes,
   postArticleVote,
 } from "../../utils/api";
 import { MDBIcon, MDBBtn } from "mdb-react-ui-kit";
@@ -17,20 +16,14 @@ const ArticleVotes = ({ id, votes, voters, author }) => {
     if (!hasVoted) {
       setArticleVotes((currVotes) => currVotes + 1);
       setHasVoted(true);
-      Promise.all([
-        postArticleVote(username, id),
-        patchVotes("articles", id, 1),
-      ]).catch(() => {
+      postArticleVote(username, id).catch(() => {
         setArticleVotes((currVotes) => currVotes - 1);
         setHasVoted(false);
       });
     } else {
       setArticleVotes((currVotes) => currVotes - 1);
       setHasVoted(false);
-      Promise.all([
-        deleteArticleVote(username, id),
-        patchVotes("articles", id, -1),
-      ]).catch(() => {
+      deleteArticleVote(username, id).catch(() => {
         setArticleVotes((currVotes) => currVotes + 1);
         setHasVoted(true);
       });
