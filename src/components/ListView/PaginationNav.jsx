@@ -23,7 +23,7 @@ const PaginationNav = ({ page, setPage, totalCount }) => {
         </MDBPaginationItem>
         {pageNums.map((p, i) => {
           return (
-            <MDBPaginationItem className={`pagination-circle ${i + 1 === page ? "page-item active" : ""}`}>
+            <MDBPaginationItem key={i + 1} className={`pagination-circle ${i + 1 === page ? "page-item active" : ""}`}>
               <MDBPaginationLink
                 onClick={() => {
                   setPage(i + 1);
