@@ -41,7 +41,7 @@ const NavBar = () => {
 
   return (
     <header>
-      <MDBNavbar className="p-2" expand="md" light bgColor="white" fixed="top">
+      <MDBNavbar className="app-navbar" expand="md" light bgColor="white" fixed="top">
         <MDBContainer fluid>
           <MDBNavbarBrand href="/">NC News</MDBNavbarBrand>
           <MDBNavbarToggler
