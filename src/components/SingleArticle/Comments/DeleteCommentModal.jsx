@@ -8,7 +8,7 @@ import {
 import { useContext } from "react";
 import { ModalContext } from "../../../contexts/ModalContext";
 
-const DeleteCommentModal = ({ id }) => {
+const DeleteCommentModal = ({ id, onDeleteClick }) => {
   const { setModal } = useContext(ModalContext);
 
   return (
@@ -17,6 +17,9 @@ const DeleteCommentModal = ({ id }) => {
       <MDBModalFooter>
         <MDBBtn color="secondary" onClick={() => setModal(undefined)}>
           Cancel
+        </MDBBtn>
+        <MDBBtn color="danger" onClick={() => onDeleteClick(id)}>
+          Delete
         </MDBBtn>
       </MDBModalFooter>
     </>
