@@ -20,6 +20,7 @@ const CommentCard = ({
       (comment) => comment.comment_id !== comment_id
     );
     setComments(updatedComments);
+    setModal(undefined);
     deleteComment(comment_id).catch(() => {
       setComments(comments);
     });
@@ -41,7 +42,7 @@ const CommentCard = ({
             <MDBBtn
               color="danger"
               className="px-2 mt-2"
-              onClick={() => setModal(<DeleteCommentModal id={comment_id}/>)}
+              onClick={() => setModal(<DeleteCommentModal id={comment_id} onDeleteClick={handleDelete}/>)}
             >
               Delete
             </MDBBtn>
