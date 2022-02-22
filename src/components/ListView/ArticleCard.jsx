@@ -20,7 +20,7 @@ const ArticleCard = ({
   hideAuthor,
 }) => {
   return (
-    <MDBCard className="shadow my-4 mx-5 px-2">
+    <MDBCard className="shadow my-4 px-2">
       <MDBCardBody>
         <MDBCardTitle tag="h4" className="mb-2">
           {title}
