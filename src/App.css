@@ -1,5 +1,22 @@
 .App {
   text-align: center;
+  padding-top: 85px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .App {
+    padding-left: 25vw;
+    padding-right: 25vw;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .App {
+    padding-left: 30vw;
+    padding-right: 30vw;
+  }
 }
 
 .App-logo {
@@ -63,4 +80,12 @@ a.dropdown-item {
 
 #profile-list {
   font-size: 1.5rem;
+}
+
+.app-navbar {
+  padding: 0.5rem;
+}
+
+.modal-open .app-navbar {
+  padding-right: calc(0.5rem + 15px);
 }
