@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { deleteComment } from "../../../utils/api";
 import { UserContext } from "../../../contexts/UserContext";
+import { ModalContext } from "../../../contexts/ModalContext";
 import { formatDate } from "../../../utils/utils";
 import { MDBBtn } from "mdb-react-ui-kit";
 import CommentVotes from "./CommentVotes";
+import DeleteCommentModal from "./DeleteCommentModal";
 
 const CommentCard = ({
   comment: { comment_id, body, author, votes, created_at },
@@ -11,6 +13,7 @@ const CommentCard = ({
   setComments,
 }) => {
   const { username } = useContext(UserContext);
+  const {setModal} = useContext(ModalContext);
 
   const handleDelete = (comment_id) => {
     const updatedComments = comments.filter(
@@ -38,7 +41,7 @@ const CommentCard = ({
             <MDBBtn
               color="danger"
               className="px-2 mt-2"
-              onClick={() => handleDelete(comment_id)}
+              onClick={() => setModal(<DeleteCommentModal id={comment_id}/>)}
             >
               Delete
             </MDBBtn>
