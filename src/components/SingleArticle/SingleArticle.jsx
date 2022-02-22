@@ -47,7 +47,7 @@ const SingleArticle = () => {
                 </MDBBadge>
                 <h5>{article.author}</h5>
                 <p>{formatDate(article.created_at)}</p>
-                <p className="text-start">{article.body}</p>
+                <p className="text-start px-2 mx-2">{article.body}</p>
                 <ArticleVotes
                   id={article.article_id}
                   votes={article.votes}
