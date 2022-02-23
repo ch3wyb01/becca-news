@@ -89,3 +89,7 @@ a.dropdown-item {
 .modal-open .app-navbar {
   padding-right: calc(0.5rem + 15px);
 }
+
+.page-link {
+  cursor: pointer;
+}
