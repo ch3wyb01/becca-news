@@ -6,7 +6,7 @@ const Modal = ({ children }) => {
   const { modal } = useContext(ModalContext);
 
   return (
-    <MDBModal show={modal}>
+    <MDBModal show={modal} staticBackdrop={true}>
       <MDBModalDialog centered>
         <MDBModalContent>{children}</MDBModalContent>
       </MDBModalDialog>
