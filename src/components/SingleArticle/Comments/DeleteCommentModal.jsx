@@ -13,9 +13,12 @@ const DeleteCommentModal = ({ id, onDeleteClick }) => {
 
   return (
     <>
-      <MDBModalBody>Are you sure you want to delete this comment?</MDBModalBody>
+    <MDBModalHeader className="justify-content-center">
+        <MDBModalTitle className="text-center">Are you sure you want to delete this comment?</MDBModalTitle>
+    </MDBModalHeader>
+      <MDBModalBody>This action can't be undone.</MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn color="secondary" onClick={() => setModal(undefined)}>
+        <MDBBtn outline color="dark" onClick={() => setModal(undefined)}>
           Cancel
         </MDBBtn>
         <MDBBtn color="danger" onClick={() => onDeleteClick(id)}>
