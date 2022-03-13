@@ -26,11 +26,11 @@ const ArticleCard = ({
           {title}
         </MDBCardTitle>
         {!hideAuthor && (
-          <MDBCardSubTitle tag="h6" className="mb-1">
-            By {author}
+          <MDBCardSubTitle tag="h6" className="mb-2">
+            <MDBIcon fas icon="user" /> {author}
           </MDBCardSubTitle>
         )}
-        <MDBCardSubTitle>{formatDate(created_at)}</MDBCardSubTitle>
+        <MDBCardSubTitle className="mb-3">{formatDate(created_at)}</MDBCardSubTitle>
         <div
           className={`d-flex ${
             hideTopic ? "justify-content-end" : "justify-content-between"
