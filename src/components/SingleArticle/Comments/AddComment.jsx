@@ -42,7 +42,7 @@ const AddComment = ({ article_id, setComments, comments }) => {
           value={newComment}
         />
         {isEmptyComment ? <p>Comment cannot be empty</p> : null}
-        <MDBBtn className="align-self-center mt-3 px-2" type="submit">
+        <MDBBtn outline color='secondary'className="align-self-end mt-3 px-2" type="submit">
           Add comment
         </MDBBtn>
       </form>
