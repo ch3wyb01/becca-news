@@ -13,7 +13,7 @@ const CommentCard = ({
   setComments,
 }) => {
   const { username } = useContext(UserContext);
-  const {setModal} = useContext(ModalContext);
+  const { setModal } = useContext(ModalContext);
 
   const handleDelete = (comment_id) => {
     const updatedComments = comments.filter(
@@ -40,9 +40,17 @@ const CommentCard = ({
         {username === author ? (
           <>
             <MDBBtn
+              outline
               color="danger"
               className="px-2 mt-2"
-              onClick={() => setModal(<DeleteCommentModal id={comment_id} onDeleteClick={handleDelete}/>)}
+              onClick={() =>
+                setModal(
+                  <DeleteCommentModal
+                    id={comment_id}
+                    onDeleteClick={handleDelete}
+                  />
+                )
+              }
             >
               Delete
             </MDBBtn>
