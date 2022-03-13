@@ -3,7 +3,7 @@ import { deleteComment } from "../../../utils/api";
 import { UserContext } from "../../../contexts/UserContext";
 import { ModalContext } from "../../../contexts/ModalContext";
 import { formatDate } from "../../../utils/utils";
-import { MDBBtn } from "mdb-react-ui-kit";
+import { MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 import CommentVotes from "./CommentVotes";
 import DeleteCommentModal from "./DeleteCommentModal";
 
@@ -28,21 +28,18 @@ const CommentCard = ({
 
   return (
     <div>
-      <div className="d-flex flex-column justify-content-start align-items-start">
-        <h6 className="fw-bold mb-1">{author}</h6>
-        <p>
-          <small>{formatDate(created_at)}</small>
-        </p>
-      </div>
-      <p className="text-start">{body}</p>
-      <div className="d-flex flex-column align-items-center">
-        <CommentVotes id={comment_id} votes={votes} author={author} />
+      <div className="d-flex justify-content-between align-items-start">
+        <div className="d-flex flex-column align-items-start justify-content-center">
+          <h6 className="fw-bold mb-1">{author}</h6>
+          <p>
+            <small>{formatDate(created_at)}</small>
+          </p>
+        </div>
         {username === author ? (
           <>
             <MDBBtn
-              outline
-              color="danger"
-              className="px-2 mt-2"
+              color="link"
+              className="px-3 py-2 text-danger fs-6"
               onClick={() =>
                 setModal(
                   <DeleteCommentModal
@@ -52,10 +49,14 @@ const CommentCard = ({
                 )
               }
             >
-              Delete
+              <MDBIcon fas icon="trash-alt" />
             </MDBBtn>
           </>
         ) : null}
+      </div>
+      <p className="text-start">{body}</p>
+      <div className="d-flex flex-column align-items-center">
+        <CommentVotes id={comment_id} votes={votes} author={author} />
       </div>
       <hr />
     </div>
