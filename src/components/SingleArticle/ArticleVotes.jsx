@@ -32,10 +32,11 @@ const ArticleVotes = ({ id, votes, voters, author }) => {
 
   return (
     <MDBBtn
+      color="secondary"
       className={`px-2 py-1 ${username === author ? "disabled" : ""}`}
       onClick={handleClick}
     >
-      {articleVotes} <MDBIcon far icon="star" />
+      <MDBIcon far icon="star" /> {articleVotes} 
     </MDBBtn>
   );
 };

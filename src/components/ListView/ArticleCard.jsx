@@ -25,7 +25,11 @@ const ArticleCard = ({
         <MDBCardTitle tag="h4" className="mb-2">
           {title}
         </MDBCardTitle>
-        {!hideAuthor && <MDBCardSubTitle tag="h6" className="mb-1">By {author}</MDBCardSubTitle>}
+        {!hideAuthor && (
+          <MDBCardSubTitle tag="h6" className="mb-1">
+            By {author}
+          </MDBCardSubTitle>
+        )}
         <MDBCardSubTitle>{formatDate(created_at)}</MDBCardSubTitle>
         <div
           className={`d-flex ${
@@ -38,11 +42,11 @@ const ArticleCard = ({
             </MDBBadge>
           )}
           <div className="d-flex">
-            <MDBCardSubTitle className="mx-2">
-              {votes} <MDBIcon far icon="star" />
+            <MDBCardSubTitle className="mx-2 text-secondary">
+              <MDBIcon far icon="star" /> {votes}
             </MDBCardSubTitle>
-            <MDBCardSubTitle>
-              {comment_count} <MDBIcon far icon="comments" />
+            <MDBCardSubTitle className="mx-2 text-secondary">
+              <MDBIcon far icon="comments" /> {comment_count}
             </MDBCardSubTitle>
           </div>
         </div>
