@@ -39,7 +39,7 @@ const ArticlesList = () => {
         </div>
       ) : (
         <main>
-          <h1>{topic ? `${topic} articles` : "All articles"}</h1>
+          <h1 className="text-capitalize">{topic ? `${topic} Articles` : "All Articles"}</h1>
           <DropDown sortValue={sortValue} setSortValue={setSortValue} />
           <PaginationNav page={page} setPage={setPage} totalCount={totalCount}/>
           {articles.map((article) => {
