@@ -18,7 +18,7 @@ const DeleteCommentModal = ({ id, onDeleteClick }) => {
     </MDBModalHeader>
       <MDBModalBody>This action can't be undone.</MDBModalBody>
       <MDBModalFooter>
-        <MDBBtn outline color="dark" onClick={() => setModal(undefined)}>
+        <MDBBtn outline color="light" onClick={() => setModal(undefined)}>
           Cancel
         </MDBBtn>
         <MDBBtn color="danger" onClick={() => onDeleteClick(id)}>
