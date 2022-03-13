@@ -53,7 +53,6 @@ const ArticlesList = () => {
                 votes={article.votes}
                 comment_count={article.comment_count}
                 topic={article.topic}
-                hideTopic={topic}
               />
             );
           })}

@@ -16,7 +16,6 @@ const ArticleCard = ({
   votes,
   author,
   comment_count,
-  hideTopic,
   hideAuthor,
 }) => {
   return (
@@ -30,17 +29,13 @@ const ArticleCard = ({
             <MDBIcon fas icon="user" /> {author}
           </MDBCardSubTitle>
         )}
-        <MDBCardSubTitle className="mb-3">{formatDate(created_at)}</MDBCardSubTitle>
-        <div
-          className={`d-flex ${
-            hideTopic ? "justify-content-end" : "justify-content-between"
-          } px-4`}
-        >
-          {!hideTopic && (
-            <MDBBadge color="secondary" className="mb-1">
-              {topic}
-            </MDBBadge>
-          )}
+        <MDBCardSubTitle className="mb-3">
+          {formatDate(created_at)}
+        </MDBCardSubTitle>
+        <div className="d-flex justify-content-between px-4">
+          <MDBBadge color="secondary" className="mb-1">
+            {topic}
+          </MDBBadge>
           <div className="d-flex">
             <MDBCardSubTitle className="mx-2 text-secondary">
               <MDBIcon far icon="star" /> {votes}
