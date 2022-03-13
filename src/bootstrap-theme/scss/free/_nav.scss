@@ -31,8 +31,9 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $primary;
-    border-color: $primary;
+    color: white;
+    // border-color: $primary;
+    border-bottom: 2px solid $secondary;
   }
 }
 
