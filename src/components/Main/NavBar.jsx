@@ -56,13 +56,13 @@ const NavBar = () => {
             <MDBNavbarNav className="justify-content-center">
               <MDBNavbarItem active>
                 <MDBNavbarLink aria-current="page" href="/">
-                  all articles
+                  All Articles
                 </MDBNavbarLink>
               </MDBNavbarItem>
               {topics.map((topic) => {
                 return (
                   <MDBNavbarItem key={topic.slug}>
-                    <MDBNavbarLink href={`/topics/${topic.slug}`}>
+                    <MDBNavbarLink href={`/topics/${topic.slug}`} className='text-capitalize'>
                       {topic.slug}
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -83,7 +83,7 @@ const NavBar = () => {
                   </MDBDropdownItem>
                   <MDBDropdownItem>
                     <MDBBtn
-                      className="my-2 p-2"
+                      className="my-3 p-2"
                       color="danger"
                       onClick={() => handleLogOut()}
                     >
@@ -94,15 +94,16 @@ const NavBar = () => {
               </MDBDropdown>
             ) : (
               <MDBNavbarNav>
-                <MDBNavbarItem className="mb-2">
-                  <MDBIcon fas icon="user-alt" /> {username}
+                <MDBNavbarItem className="text-secondary mb-1">
+                  <MDBIcon fas icon="user-alt" className="pe-1"/> {username}
                 </MDBNavbarItem>
                 <MDBNavbarItem>
-                  <MDBNavbarLink href="/profile">Profile</MDBNavbarLink>
+                  <MDBNavbarLink href="/profile">My Profile</MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
                   <MDBBtn
-                    className="mt-1 mb-1 p-2"
+                  outline
+                    className="my-3 p-2"
                     color="danger"
                     onClick={() => handleLogOut()}
                   >
