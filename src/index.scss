@@ -1,0 +1,41 @@
+@import "./bootstrap-theme/scss/mdb.free.scss";
+
+body {
+  margin: 0;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: $body-background;
+  color: $light-gray;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.card {
+  background-color: $body-background !important;
+  border: solid 1px $dark-gray;
+}
+
+select {
+  padding-top: $input-padding-top;
+  padding-bottom: $input-padding-bottom;
+  outline: none;
+  border: solid 1px $dark-gray;
+  background-color: $primary;
+  border-radius: 0.25rem;
+  color: white;
+}
+
+@import "./App.scss";
