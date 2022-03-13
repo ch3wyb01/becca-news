@@ -43,14 +43,14 @@ const Login = () => {
           <h1>NC News</h1>
           <MDBCard className="shadow my-4 mx-auto px-2">
             <MDBCardBody>
-              <MDBCardTitle>Login</MDBCardTitle>
+              <MDBCardTitle className="mb-4">Login</MDBCardTitle>
               <form
                 onSubmit={(event) => checkUser(event)}
                 id="login-form"
                 className="d-flex flex-column justify-content-between align-items-center"
               >
                 <MDBInput label="Username" type="text" />
-                <MDBBtn type="submit" className="mt-2 px-3">
+                <MDBBtn type="submit" color="secondary" className="mt-3 px-3">
                   Log in
                 </MDBBtn>
               </form>
