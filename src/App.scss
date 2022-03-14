@@ -67,13 +67,12 @@
 ul.dropdown-menu {
   background-color: $primary;
   z-index: 1050 !important;
-}
-
-ul.dropdown-menu li,
-a.dropdown-item {
-  background-color: transparent !important;
-  z-index: 1050;
-  color: white !important;
+  li,
+  a.dropdown-item {
+    background-color: transparent !important;
+    z-index: 1050;
+    color: white !important;
+  }
 }
 
 #profile-greeting {
