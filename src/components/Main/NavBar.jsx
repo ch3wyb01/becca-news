@@ -36,12 +36,18 @@ const NavBar = () => {
   const handleLogOut = () => {
     setUsername(undefined);
     sessionStorage.setItem("username", undefined);
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <header>
-      <MDBNavbar className="app-navbar" expand="md" light bgColor="primary" fixed="top">
+      <MDBNavbar
+        className="app-navbar"
+        expand="md"
+        light
+        bgColor="primary"
+        fixed="top"
+      >
         <MDBContainer fluid>
           <MDBNavbarBrand href="/">NC News</MDBNavbarBrand>
           <MDBNavbarToggler
@@ -62,7 +68,10 @@ const NavBar = () => {
               {topics.map((topic) => {
                 return (
                   <MDBNavbarItem key={topic.slug}>
-                    <MDBNavbarLink href={`/topics/${topic.slug}`} className='text-capitalize'>
+                    <MDBNavbarLink
+                      href={`/topics/${topic.slug}`}
+                      className="text-capitalize"
+                    >
                       {topic.slug}
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -83,6 +92,7 @@ const NavBar = () => {
                   </MDBDropdownItem>
                   <MDBDropdownItem>
                     <MDBBtn
+                      outline
                       className="my-3 p-2"
                       color="danger"
                       onClick={() => handleLogOut()}
@@ -95,14 +105,14 @@ const NavBar = () => {
             ) : (
               <MDBNavbarNav>
                 <MDBNavbarItem className="text-secondary mb-1">
-                  <MDBIcon fas icon="user-alt" className="pe-1"/> {username}
+                  <MDBIcon fas icon="user-alt" className="pe-1" /> {username}
                 </MDBNavbarItem>
                 <MDBNavbarItem>
                   <MDBNavbarLink href="/profile">My Profile</MDBNavbarLink>
                 </MDBNavbarItem>
                 <MDBNavbarItem>
                   <MDBBtn
-                  outline
+                    outline
                     className="my-3 p-2"
                     color="danger"
                     onClick={() => handleLogOut()}
