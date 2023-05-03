@@ -48,6 +48,7 @@ export const deleteComment = (id) => {
   return newsApi.delete(`/comments/${id}`);
 };
 
+// User
 export const getUser = async (username) => {
   const res = await newsApi.get(`/users/${username}`);
   return res.data.user;
